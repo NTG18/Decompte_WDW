@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Décompte WDW</title>
+  <style>
+    #video-background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1; /* Placer la vidéo en arrière-plan */
+    }
+
+    #title {
+      position: absolute;
+      top: 20px;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: black; /* Modifier la couleur de la police ici */
+      font-size: 48px;
+      font-family: 'DM Sans', sans-serif;
+      text-align: center;
+      z-index: 1;
+    }
+
+    #countdown {
+      width: 800px;
+      height: 400px;
+      background-color: rgba(0, 0, 0, 0.5);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 36px;
+      font-family: 'DM Sans', sans-serif;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 1; /* Mettre le décompte au premier plan */
+    }
+  </style>
+</head>
+<body>
+  <video autoplay muted loop id="video-background">
+    <source src="Disney-magic_Tickets-24-1.mp4" type="video/mp4">
+  </video>
+  <h1 id="title">Décompte Walt Disney World</h1>
+  <div id="countdown"></div>
+  <script>
+    function getTimeRemaining(endTime) {
+      const total = Date.parse(endTime) - Date.parse(new Date());
+      const seconds = Math.floor((total / 1000) % 60);
+      const minutes = Math.floor((total / 1000 / 60) % 60);
+      const hours = Math.floor((total / (1000 * 60 * 60)) % 24);
+      const days = Math.floor(total / (1000 * 60 * 60 * 24));
+      return {
+        total,
+        days,
+        hours,
+        minutes,
+        seconds
+      };
+    }
+
+    function initializeClock(id, endTime) {
+      const clock = document.getElementById(id);
+      function updateClock() {
+        const t = getTimeRemaining(endTime);
+        clock.innerHTML = t.days + 'd ' + t.hours + 'h ' + t.minutes + 'm ' + t.seconds + 's';
+        if (t.total <= 0) {
+          clearInterval(timeinterval);
+        }
+      }
+      updateClock();
+      const timeinterval = setInterval(updateClock, 1000);
+    }
+    const deadline = '2024-10-18';
+    initializeClock('countdown', deadline);
+  </script>
+</body>
+</html>
