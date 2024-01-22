@@ -72,7 +72,7 @@
       const clock = document.getElementById(id);
       function updateClock() {
         const t = getTimeRemaining(endTime);
-        clock.innerHTML = t.days + 'd ' + t.hours + 'h ' + t.minutes + 'm ' + t.seconds + 's';
+        clock.innerHTML = t.days + 'D ' + t.hours + 'H ' + t.minutes + 'M ' + t.seconds + 'S';
         if (t.total <= 0) {
           clearInterval(timeinterval);
         }
