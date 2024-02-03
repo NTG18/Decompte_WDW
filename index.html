@@ -18,6 +18,18 @@
 
     #title {
       position: absolute;
+      top: -20px;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: black; /* Modifier la couleur de la police ici */
+      font-size: 48px;
+      font-family: 'DM Sans', sans-serif;
+      text-align: center;
+      z-index: 1;
+    }
+
+    #lien {
+      position: absolute;
       top: 20px;
       left: 50%;
       transform: translate(-50%, -50%);
@@ -51,6 +63,7 @@
     <source src="Disney-magic_Tickets-24-1.mp4" type="video/mp4">
   </video>
   <h1 id="title">Décompte Walt Disney World</h1>
+  <h2 id="lien"><a href="https://docs.google.com/presentation/d/1KgJtzfX6hiBqbJ_MvJbrl0DXm4aZdF6i7ZC_kXEo06U/edit?usp=sharing" target="_blank">https://docs.google.com/presentation/d/1KgJtzfX6hiBqbJ_MvJbrl0DXm4aZdF6i7ZC_kXEo06U/edit?usp=sharing</a></h2/>
   <div id="countdown"></div>
   <script>
     function getTimeRemaining(endTime) {
